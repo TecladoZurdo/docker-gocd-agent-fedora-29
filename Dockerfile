@@ -77,6 +77,9 @@ COPY --chown=go:root agent-bootstrapper-logback-include.xml agent-launcher-logba
 RUN chown -R go:root /docker-entrypoint.d /go /godata /docker-entrypoint.sh \
     && chmod -R g=u /docker-entrypoint.d /go /godata /docker-entrypoint.sh
 
+RUN yum install -y maven gradle nodejs npm
+
+RUN npm install -g @angular/cli
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
